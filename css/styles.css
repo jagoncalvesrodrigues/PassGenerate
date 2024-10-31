@@ -4,6 +4,10 @@
 body{
     margin: 0;
     font-family: sans-serif;
+    background-color: #0e6655;
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 img{
     display: block;
@@ -18,4 +22,41 @@ ul{
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+}
+.main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 33%;
+    justify-content: center;
+}
+.main p{
+    align-self:flex-start;
+    margin-left: 1%;
+    letter-spacing: 0.25rem;
+}
+.pass-shown, .range, .button{
+    width: 100%;
+    background-color: #117a65;
+    height: 8%;
+    text-align: center;
+    border-radius: 10px;
+}
+.pass-shown p, .range span, .button{
+    margin-top: 4%;
+}
+.range{
+    background-color: #117a65;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button{
+    color: white;
+    border: none;
+    background-color: #C70039;
+    cursor: pointer;
+    letter-spacing: 0.30rem;
+    font-size: medium;
 }
