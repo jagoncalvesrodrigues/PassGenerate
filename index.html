@@ -11,12 +11,24 @@
         <div class="pass-shown">
             <p id="pass">P4$5W0RD!</p>
         </div>
-        <p>LENGTH: <span id="length"></span></p>
+        <p>LENGTH: <span id="length">16</span></p>
         <div class="range">
             <span>4</span><input class="range-input" type="range" min="4" max="32" value="16"><span>32</span>
         </div> 
-        <button id="main-button" class="button">Generate Password</button>
+        <div class="range range-option">
+            <span  class="text-option">Include Uppercase</span><input class="" id="uppercase" type="checkbox">
+        </div> 
+        <div class="range range-option">
+            <span class="text-option">Include Lowercase</span><input class="" id="lowercase" type="checkbox">
+        </div> 
+        <div class="range range-option">
+            <span class="text-option">Include Numbers</span><input class="" id="numbers" type="checkbox">
+        </div> 
+        <div class="range range-option">
+            <span class="text-option">Include Symbols</span><input class="" id="Symbols" type="checkbox">
+        </div> 
+        <button id="main-button" class="button" disabled>Generate Password</button>
     </main>
 </body>
-<script src="./js/script2.js"></script>
+<script src="./js/script.js"></script>
 </html>

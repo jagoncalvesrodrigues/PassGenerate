@@ -50,6 +50,11 @@ ul{
     background-color: #117a65;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 2%;
+}
+.range-input{
+    accent-color: #093a30;
+    width: 70%;
 }
 
 .button{
@@ -59,4 +64,7 @@ ul{
     cursor: pointer;
     letter-spacing: 0.30rem;
     font-size: medium;
+}
+.text-option{
+    font-size: 23px;
 }

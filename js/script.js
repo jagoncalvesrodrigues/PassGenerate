@@ -31,18 +31,45 @@
 const pass = document.getElementById("pass");
 const length = document.getElementById("length");
 const rangeInput = document.querySelector(".range-input");
-const range = document.getElementById("range");
 const button = document.getElementById("main-button");
+const uppercaseInput = document.getElementById("uppercase");
+const lowercaseInput = document.getElementById("lowercase");
+const numbersInput = document.getElementById("numbers");
+const symbolsInput = document.getElementById("symbols");
 
+const upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz'
+const numbersChar = '01234567890'
+const symbolsChar = '!@#$%^&*()_+-={}[]:;<>,.?/'
+const characters = '';
+
+
+const rangeInputvalue = event=>{
+    length.innerHTML = event.target.value;
+}
+
+const generateChars = () => {
+    if(uppercaseInput.checked){
+        characters+=upperCaseChar;
+    }
+    if(lowercaseInput.checked){
+        characters+=lowerCaseChar;
+    }
+    if(numbersInput.checked){
+        characters+=numbersChar;
+    }
+    if(symbolsInput.checked){
+        characters+=symbolsChar;
+    }
+    return characters;
+}
 
 button.addEventListener("click", () => {
     const rangeValue = rangeInput.value;
-    const lengthValue = length.value;
-    generatePassword(rangeValue, lengthValue);
+    generatePassword(rangeValue);
 })
 
-function generatePassword(rangeValue, lengthValue) {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890!@#$%^&*()_+-={}[]:;<>,.?/";
+const generatePassword = (rangeValue,characters) => {
     let password = "";  
     for (let i = 0; i < rangeValue; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
@@ -50,7 +77,14 @@ function generatePassword(rangeValue, lengthValue) {
     }
     pass.innerHTML = password;  
     length.innerHTML = rangeValue;
-
 }
+
+rangeInput.addEventListener('input',rangeInputvalue);
+uppercaseInput.addEventListener('change',generateChars);
+lowercaseInput.addEventListener('change',generateChars);
+numbersInput.addEventListener('change',generateChars);
+symbolsInput.addEventListener('change',generateChars);
+
+
 
 
