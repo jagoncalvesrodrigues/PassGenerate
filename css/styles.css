@@ -65,6 +65,11 @@ ul{
     letter-spacing: 0.30rem;
     font-size: medium;
 }
+
+.button:disabled{
+    background-color:darkgrey;
+}
+
 .text-option{
     font-size: 23px;
 }

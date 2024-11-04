@@ -36,55 +36,59 @@ const uppercaseInput = document.getElementById("uppercase");
 const lowercaseInput = document.getElementById("lowercase");
 const numbersInput = document.getElementById("numbers");
 const symbolsInput = document.getElementById("symbols");
+// const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234567890!@#$%^&*()_+-={}[]:;<>,.?/";
 
-const upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz'
-const numbersChar = '01234567890'
-const symbolsChar = '!@#$%^&*()_+-={}[]:;<>,.?/'
-const characters = '';
+const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const lowerChars='abcdefghijklmnopqrstuvwxyz';
+const numbersChars='01234567890';
+const symbolsChars='!@#$%^&*()_+-={}[]:;<>,.?/';
+let newcharacters = '';
 
 
-const rangeInputvalue = event=>{
-    length.innerHTML = event.target.value;
-}
-
-const generateChars = () => {
+const checkOptions = ()=>{
+    
     if(uppercaseInput.checked){
-        characters+=upperCaseChar;
+        newcharacters+=uppercaseChars;
     }
     if(lowercaseInput.checked){
-        characters+=lowerCaseChar;
+        newcharacters+=lowerChars;
     }
     if(numbersInput.checked){
-        characters+=numbersChar;
+        newcharacters+=numbersChars;
     }
     if(symbolsInput.checked){
-        characters+=symbolsChar;
+        newcharacters+=symbolsChars;
     }
-    return characters;
+    buttonDisabled(newcharacters);
+    return newcharacters;
 }
 
-button.addEventListener("click", () => {
-    const rangeValue = rangeInput.value;
-    generatePassword(rangeValue);
-})
-
-const generatePassword = (rangeValue,characters) => {
-    let password = "";  
-    for (let i = 0; i < rangeValue; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        password += characters.charAt(randomIndex);
+const buttonDisabled = (newcharacters) =>{
+    if(newcharacters.length>0){
+        button.disabled=false;
+    }else{
+        button.disabled=true;
     }
-    pass.innerHTML = password;  
-    length.innerHTML = rangeValue;
 }
 
-rangeInput.addEventListener('input',rangeInputvalue);
-uppercaseInput.addEventListener('change',generateChars);
-lowercaseInput.addEventListener('change',generateChars);
-numbersInput.addEventListener('change',generateChars);
-symbolsInput.addEventListener('change',generateChars);
+const setLength = (event)=>{
+    length.innerHTML=event.target.value;
+    passwordLength = event.target.value;
+};
 
+const generatePass = ()=>{
+    let newPassword = '';
+    for (let index = 0; index < passwordLength; index++) {
+        const number = Math.floor(Math.random()*newcharacters.length);
+        const char = newcharacters.charAt(number)
+        newPassword += char;
+    }
+    pass.innerHTML=newPassword;
+};
 
-
-
+rangeInput.addEventListener('input', setLength);
+button.addEventListener('click',generatePass);
+uppercaseInput.addEventListener('change',checkOptions);
+lowercaseInput.addEventListener('change',checkOptions);
+numbersInput.addEventListener('change',checkOptions);
+symbolsInput.addEventListener('change',checkOptions);
